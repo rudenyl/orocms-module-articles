@@ -1,0 +1,18 @@
+{
+    "name": "Articles",
+    "alias": "articles",
+    "title": "Articles",
+    "author": "AspenCoreDev <admin@admin.com>",
+    "description": "Articles management module for the AspenCore Platform.",
+    "keywords": [],
+    "active": 1,
+    "menu": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Articles\\Providers\\ArticlesServiceProvider"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ]
+}

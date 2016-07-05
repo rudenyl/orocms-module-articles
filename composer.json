@@ -1,0 +1,15 @@
+{
+	"name": "rudenyl/orocms-articles",
+	"description": "Articles package for OroCMS",
+	"authors": [
+		{
+			"name": "Dhens",
+			"email": "rudenyl@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Modules\\Articles\\": ""
+		}
+	}
+}
