@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class ArticlesController extends BaseController
 {
     protected $view_prefix = 'articles';
-    protected $theme = '';
 
     /**
      * @var Modules\Articles\Entities\Article

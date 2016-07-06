@@ -1,14 +1,13 @@
-<?php 
+<?php
 namespace Modules\Articles\Http\Controllers;
 
 use Modules\Articles\Repositories\ArticleRepository;
 use OroCMS\Admin\Controllers\BaseController;
 
-class ArticlesController extends BaseController 
+class ArticlesController extends BaseController
 {
     protected $route_prefix = 'articles';
     protected $view_prefix = 'articles';
-    protected $theme = '';
 
     protected $repository;
 
@@ -29,7 +28,7 @@ class ArticlesController extends BaseController
         $article = $this->repository->findBy('slug', $slug)->first();
         $view = $this->view('article', compact('article'));
 
-        # 
+        #
         # onAfterRenderItem
         #
         event('articles.onAfterRenderItem', $view);
