@@ -2,7 +2,7 @@
 namespace Modules\Articles\Http\Controllers;
 
 use Modules\Articles\Repositories\ArticleRepository;
-use OroCMS\Admin\Controllers\BaseController;
+use OroCMS\Admin\Controllers\FrontendBaseController as BaseController;
 
 class ArticlesController extends BaseController
 {
