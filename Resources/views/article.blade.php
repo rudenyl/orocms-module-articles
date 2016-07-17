@@ -8,8 +8,6 @@
             {{ $article->title }}
         </h1>
 
-        <div role="md">
-            {!! $article->description !!}
-        </div>
+        {!! $article->description !!}
     @stop
 @endif
