@@ -4,7 +4,6 @@ namespace Modules\Articles\Repositories;
 use Modules\Articles\Entities\Article;
 use Modules\Articles\Entities\ArticlePublishing;
 use Modules\Articles\Transformers\ArticleTransformer;
-use Modules\Articles\Exceptions\ArticleNotFoundException;
 use OroCMS\Admin\Contracts\EntityRepositoryInterface;
 use League\Fractal\Manager;
 use League\Fractal\Resource;
@@ -242,7 +241,7 @@ class ArticleRepository implements EntityRepositoryInterface
             ->first();
 
         if (empty($article)) {
-            throw new ArticleNotFoundException;
+            abort(404);
         }
 
         return $article;
@@ -259,7 +258,27 @@ class ArticleRepository implements EntityRepositoryInterface
      */
     public function findBy($key, $value, $operator = '=')
     {
-        return $this->paginate($this->getModel()->where($key, $operator, $value));
+        // build
+        $repository = $this->articleQuery($sql_publishing);
+
+        // published only
+        $repository->where(new Expression($sql_publishing), 1);
+
+        // find
+        $article = $repository
+            ->where($key, $operator, $value)
+            ->first();
+
+        if (empty($article)) {
+            abort(404);
+        }
+
+        // is private?
+        if ($article->publishing->access && !auth()->user()) {
+            abort(401);
+        }
+
+        return $article;
     }
 
     /**
