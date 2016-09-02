@@ -150,7 +150,7 @@ class ArticleRepository implements EntityRepositoryInterface
      *
      * @return mixed
      */
-    public function getAll()
+    public function getAll($with_trashed = true)
     {
         #
         # get options
@@ -177,6 +177,10 @@ class ArticleRepository implements EntityRepositoryInterface
         // deleted only
         if (Request::get('deleted_only', false)) {
             $repository->onlyTrashed();
+        }
+
+        if ($with_trashed) {
+            !$published and $repository->withTrashed();
         }
 
         $total = $repository->count();
