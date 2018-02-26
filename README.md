@@ -7,7 +7,7 @@ Clone or copy to /modules of your OroCMS installation.
 
 To install, issue a php artisan command with:
 ```
-$ php artisan admin:migration --module articles
+$ php artisan admin:migrate --module articles
 ```
 
 Enjoy!
